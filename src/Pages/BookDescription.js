@@ -28,17 +28,53 @@ const BookDescription = () => {
   //   history.goBack();
   //};
   return (
-    <>
-      <h1>{book.title}</h1>
-      <img src={book.thumbnail?.lqip} alt={book.title} width="15%" />
-      <div>{book.artist_display}</div>
-      <div>{book.date_display}</div>
-      <div>{book.main_reference_number}</div>
+    <div className="row d-flex justify-content-center align-items-center mt-4">
+      <div className="col-md-5">
+        {loading ? (
+          <div className="text-center mt-5">
+            <div className="spinner-border" role="status">
+              <span className="sr-only">Loading...</span>
+            </div>
+          </div>
+        ) : (
+          <>
+            <h3>{book.title}</h3>
 
-      <div>{book.dimensions}</div>
+            <img
+              className="mt-3"
+              src={`https://www.artic.edu/iiif/2/${book.image_id}/full/843,/0/default.jpg`}
+              width="100%"
+              alt={book.title}
+            />
+            <div className="mt-4">
+              <div>
+                <strong>Artist Display: </strong>
+                {book.artist_display}
+              </div>
+              <div>
+                <strong>Date Display: </strong> {book.date_display}
+              </div>
+              <div>
+                <strong>Main Reference Number: </strong>
+                {book.main_reference_number}
+              </div>
+              <div>
+                <strong>Dimensions: </strong>
+                {book.dimensions}
+              </div>
+            </div>
 
-      <button onClick={() => navigate(-1)}>Go Back</button>
-    </>
+            <button
+              type="button"
+              className="btn btn-primary mt-3"
+              onClick={() => navigate(-1)}
+            >
+              Go Back
+            </button>
+          </>
+        )}
+      </div>
+    </div>
   );
 };
 

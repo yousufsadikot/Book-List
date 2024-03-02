@@ -6,7 +6,7 @@ import BookDescription from "./Pages/BookDescription";
 function App() {
   return (
     <BrowserRouter>
-      <div className="App">
+      <div className="container">
         <Routes>
           <Route path="/" element={<BookList />}></Route>
           <Route path="/book/:bookId" element={<BookDescription />}></Route>
