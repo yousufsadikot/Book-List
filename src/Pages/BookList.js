@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import Form from "react-bootstrap/Form";
 import Table from "react-bootstrap/Table";
 import Pagination from "react-bootstrap/Pagination";
+import categoryList from "../components/CategoryList";
 import Spinner from "react-bootstrap/Spinner";
 
 const BookList = () => {
@@ -24,7 +25,6 @@ const BookList = () => {
           url = `https://api.artic.edu/api/v1/artworks?limit=100`;
         }
 
-        console.log("url: " + url);
         const response = await axios.get(url);
         let filteredBooks = response.data.data;
 
@@ -90,7 +90,11 @@ const BookList = () => {
             onChange={handleCategoryChange}
           >
             <option value="">Select by category</option>
-            <option value="Modern Art">Modern Art</option>
+            {categoryList.map((category, index) => (
+              <option key={index} value={category.category_titles}>
+                {category.category_titles}
+              </option>
+            ))}
           </Form.Select>
         </div>
       </div>
