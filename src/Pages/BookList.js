@@ -1,9 +1,9 @@
 import axios from "axios";
-import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import Form from "react-bootstrap/Form";
-import Table from "react-bootstrap/Table";
+// import Table from "react-bootstrap/Table";
 import categoryList from "../components/CategoryList";
+import ListTable from "../components/ListTable";
 import Pagination from "../components/Pagination";
 import Spinners from "../components/Spinners";
 
@@ -97,41 +97,9 @@ const BookList = () => {
       </div>
 
       <div className="mt-3">
-        {loading ? (
-          <Spinners />
-        ) : (
-          <Table bordered responsive hover>
-            <thead>
-              <tr>
-                <th>Title</th>
-                <th>Thumbnail</th>
-              </tr>
-            </thead>
-            <tbody>
-              {currentRecords?.map((book) => {
-                return (
-                  <tr key={book.id}>
-                    <td>
-                      <Link to={`/book/${book.id}`}>{book.title}</Link>
-                    </td>
-                    <td>
-                      {book.image_id && (
-                        <Link to={`/book/${book.id}`}>
-                          <img
-                            src={`https://www.artic.edu/iiif/2/${book.image_id}/full/843,/0/default.jpg`}
-                            alt={book.title}
-                            width="100px%"
-                          />
-                        </Link>
-                      )}
-                    </td>
-                  </tr>
-                );
-              })}
-            </tbody>
-          </Table>
-        )}
+        {loading ? <Spinners /> : <ListTable data={currentRecords} />}
       </div>
+
       {/* Paginations */}
       <div className="d-flex justify-content-end ">
         <Pagination
