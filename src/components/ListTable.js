@@ -1,5 +1,4 @@
 import { Link } from "react-router-dom";
-
 import Table from "react-bootstrap/Table";
 
 const ListTable = ({ data }) => {

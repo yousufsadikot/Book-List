@@ -3,7 +3,8 @@ import { useState, useEffect } from "react";
 import Form from "react-bootstrap/Form";
 // import Table from "react-bootstrap/Table";
 import categoryList from "../components/CategoryList";
-import ListTable from "../components/ListTable";
+// import ListTable from "../components/ListTable";
+import ListCards from "../components/ListCards";
 import Pagination from "../components/Pagination";
 import Spinners from "../components/Spinners";
 
@@ -96,8 +97,8 @@ const BookList = () => {
         </div>
       </div>
 
-      <div className="mt-3">
-        {loading ? <Spinners /> : <ListTable data={currentRecords} />}
+      <div className="row mt-3 d-flex justify-content-between">
+        {loading ? <Spinners /> : <ListCards data={currentRecords} />}
       </div>
 
       {/* Paginations */}

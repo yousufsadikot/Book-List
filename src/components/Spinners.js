@@ -1,10 +1,10 @@
-import Spinners from "react-bootstrap/Spinner";
-
-const Spinner = () => {
+const Spinners = () => {
   return (
-    <Spinner animation="border" role="status">
-      <span className="visually-hidden">Loading...</span>
-    </Spinner>
+    <div className="text-center mt-5">
+      <div className="spinner-border" role="status">
+        <span className="sr-only">Loading...</span>
+      </div>
+    </div>
   );
 };
 
