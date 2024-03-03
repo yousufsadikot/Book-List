@@ -24,9 +24,7 @@ const BookDescription = () => {
     };
     fetchBookDescription();
   }, []);
-  // const handleBack = () => {
-  //   history.goBack();
-  //};
+
   return (
     <div className="row d-flex justify-content-center align-items-center mt-4">
       <div className="col-md-5">

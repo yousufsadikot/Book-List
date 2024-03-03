@@ -26,7 +26,7 @@ const BookList = () => {
         // Search based on Title if it's not empty
         if (searchQuery.length > 0) {
           filteredBooks = filteredBooks.filter((book) =>
-            book.title.match(searchQuery)
+            book.title.toString().toLowerCase().includes(searchQuery)
           );
         }
 
