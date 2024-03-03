@@ -3,27 +3,22 @@ import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import Form from "react-bootstrap/Form";
 import Table from "react-bootstrap/Table";
-import Pagination from "react-bootstrap/Pagination";
 import categoryList from "../components/CategoryList";
-import Spinner from "react-bootstrap/Spinner";
+import Pagination from "../components/Pagination";
+import Spinners from "../components/Spinners";
 
 const BookList = () => {
   const [books, setBooks] = useState([]);
   const [loading, setLoading] = useState(true);
   const [searchQuery, setSearchQuery] = useState("");
-  const [currentPage, setCurrentPage] = useState(1);
   const [selectedCategory, setSelectedCategory] = useState("");
+  const [currentPage, setCurrentPage] = useState(1);
+  const [recordsPerPage] = useState(10);
 
   useEffect(() => {
     const fetchBooks = async () => {
       try {
-        let url = `https://api.artic.edu/api/v1/artworks?page=${currentPage}`;
-
-        if (searchQuery) {
-          url = `https://api.artic.edu/api/v1/artworks?limit=100`;
-        } else if (selectedCategory) {
-          url = `https://api.artic.edu/api/v1/artworks?limit=100`;
-        }
+        let url = `https://api.artic.edu/api/v1/artworks?limit=100`;
 
         const response = await axios.get(url);
         let filteredBooks = response.data.data;
@@ -33,7 +28,6 @@ const BookList = () => {
           filteredBooks = filteredBooks.filter((book) =>
             book.title.match(searchQuery)
           );
-          console.log(" selectedCategory", filteredBooks);
         }
 
         // Filter based on selected category if it's not empty
@@ -41,7 +35,6 @@ const BookList = () => {
           filteredBooks = filteredBooks.filter((book) =>
             book.category_titles.some((a) => a === selectedCategory)
           );
-          console.log(" selectedCategory", filteredBooks);
         }
 
         setBooks(filteredBooks);
@@ -52,7 +45,7 @@ const BookList = () => {
       }
     };
     fetchBooks();
-  }, [currentPage, searchQuery, selectedCategory]);
+  }, [searchQuery, selectedCategory]);
 
   const handlePageClick = (pageNumber) => {
     setCurrentPage(pageNumber);
@@ -67,6 +60,10 @@ const BookList = () => {
     setSelectedCategory(value);
     console.log(value);
   };
+  const indexOfLastRecord = currentPage * recordsPerPage;
+  const indexOfFirstRecord = indexOfLastRecord - recordsPerPage;
+  const currentRecords = books.slice(indexOfFirstRecord, indexOfLastRecord);
+  const nPages = Math.ceil(books.length / recordsPerPage);
 
   return (
     <>
@@ -101,9 +98,7 @@ const BookList = () => {
 
       <div className="mt-3">
         {loading ? (
-          <Spinner animation="border" role="status">
-            <span className="visually-hidden">Loading...</span>
-          </Spinner>
+          <Spinners />
         ) : (
           <Table bordered responsive hover>
             <thead>
@@ -113,7 +108,7 @@ const BookList = () => {
               </tr>
             </thead>
             <tbody>
-              {books?.map((book) => {
+              {currentRecords?.map((book) => {
                 return (
                   <tr key={book.id}>
                     <td>
@@ -137,19 +132,13 @@ const BookList = () => {
           </Table>
         )}
       </div>
-
+      {/* Paginations */}
       <div className="d-flex justify-content-end ">
-        <Pagination>
-          {Array.from({ length: 10 }).map((_, index) => (
-            <Pagination.Item
-              key={index + 1}
-              active={index + 1 === currentPage}
-              onClick={() => handlePageClick(index + 1)}
-            >
-              {index + 1}
-            </Pagination.Item>
-          ))}
-        </Pagination>
+        <Pagination
+          nPages={nPages}
+          currentPage={currentPage}
+          setCurrentPage={setCurrentPage}
+        />
       </div>
     </>
   );
