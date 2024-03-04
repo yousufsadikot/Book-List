@@ -1,12 +1,12 @@
 **Book List Application**
 
+[Demo](https://yousufsadikot.com/artbook/){:target="\_blank"}
+
 - clone repo
 - run: 'npm install'
 - run: 'npm start'
 
 This will get the development server up to see the application.
-
-[Demo](https://yousufsadikot.com/artbook/)
 
 **Development**:
 Used React (v 18.2) components for artwork list page and description page, both of which interact with an external API to fetch artwork data.
