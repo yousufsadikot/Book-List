@@ -1,9 +1,7 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
 import Form from "react-bootstrap/Form";
-// import Table from "react-bootstrap/Table";
 import categoryList from "../components/CategoryList";
-// import ListTable from "../components/ListTable";
 import ListCards from "../components/ListCards";
 import Pagination from "../components/Pagination";
 import Spinners from "../components/Spinners";
@@ -47,10 +45,6 @@ const BookList = () => {
     };
     fetchBooks();
   }, [searchQuery, selectedCategory]);
-
-  const handlePageClick = (pageNumber) => {
-    setCurrentPage(pageNumber);
-  };
 
   const handleSearch = (e) => {
     setSearchQuery(e.target.value);
