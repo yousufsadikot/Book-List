@@ -6,10 +6,10 @@ run: 'npm start'
 
 This will get the development server up to see the application.
 
-**Development**
+**Development**:
 Used React (v 18.2) components for artwork list page and description page, both of which interact with an external API to fetch artwork data.
 
-**UI Design**
+**UI Design**:
 The layout prioritizes intuitive and appealing artwork display, emphasizing mobile-first design principles. It leverages Semantic HTML and responsive CSS to effectively meet SEO and accessibility standards. Reusable components have been constructed to enhance modularity, scalability, and code consistency across the application.
 
 **List Component**
