@@ -1,6 +1,6 @@
 **Book List Application**
 
-[link](url){:target="_blank"}
+<a href="https://yousufsadikot.com/artbook/" target="_blank">Demo</a>
 
 - clone repo
 - run: 'npm install'
