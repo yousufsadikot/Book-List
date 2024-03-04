@@ -21,12 +21,18 @@ It allows users to search for artwork by title and filter them by category.
 
 **State Management:**
 It manages several states using the useState hook:
-&nbsp; books: Holds the list of artworks fetched from the API.
-&nbsp; loading: Indicates whether the data is still loading or not.
-&nbsp; searchQuery: Stores the user's search query for filtering artwork by title.
-&nbsp; selectedCategory: Stores the selected category for filtering artwrok.
-&nbsp; currentPage: Tracks the current page number for pagination.
-&nbsp; recordsPerPage: Defines the number of records to display per page.
+
+books: Holds the list of artworks fetched from the API.
+
+loading: Indicates whether the data is still loading or not.
+
+searchQuery: Stores the user's search query for filtering artwork by title.
+
+selectedCategory: Stores the selected category for filtering artwrok.
+
+currentPage: Tracks the current page number for pagination.
+
+recordsPerPage: Defines the number of records to display per page.
 
 **Fetching Data:**
 Utilizes the useEffect hook to fetch artwork data from the API when the component mounts or when searchQuery or selectedCategory changes.
