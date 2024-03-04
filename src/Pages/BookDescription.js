@@ -25,7 +25,7 @@ const BookDescription = () => {
       }
     };
     fetchBookDescription();
-  }, []);
+  }, [bookID]);
 
   return (
     <div className="row d-flex justify-content-center align-items-center mt-4">
