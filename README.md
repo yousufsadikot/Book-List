@@ -58,6 +58,7 @@ Constructs the API URL using the bookId parameter and performs the GET request u
 
 **Navigation:**
 Provides a button to allow users to navigate back to the previous page using the useNavigate hook from React Router DOM.
+
 Both components use Axios for making HTTP requests to the Art Institute of Chicago's API and manage loading states to provide a better user experience while data is being fetched. Additionally, they leverage React hooks for managing state and performing side effects.
 
 **Reusable Components**
